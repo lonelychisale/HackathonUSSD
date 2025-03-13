@@ -1,15 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-const twilio = require("twilio");
+// const twilio = require("twilio");
 
 const app = express();
 const port = process.env.PORT || 3020;
 
-const accountSid = 'your_twilio_account_sid';
-const authToken = 'your_twilio_auth_token';
-const twilioClient = twilio(accountSid, authToken);
-const twilioPhoneNumber = 'your_twilio_phone_number';
+// const accountSid = 'your_twilio_account_sid';
+// const authToken = 'your_twilio_auth_token';
+// const twilioClient = twilio(accountSid, authToken);
+// const twilioPhoneNumber = 'your_twilio_phone_number';
 
 app.use(logger("dev"));
 app.use(bodyParser.json());
