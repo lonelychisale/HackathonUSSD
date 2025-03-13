@@ -1,12 +1,66 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { response } =  require("express");
-const app = express();
-const port = 3000;
-const logger = require("morgan");
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
+const app = require("express")();
+const bodyParser = require("body-parser");
+const logger = require("morgan");
+
+
+const { response } =  require("express");
+
+
+
+
+
+
+let phone = `+265995537312`;
+
+
+// async function handleUSSDRequest() {
+//   try {
+//     const isRegistered = await checkNumberRegistration();
+
+//     if (isRegistered) {
+//       // The number is registered in Firebase
+//       console.log('Number is registered');
+//       // Display the desired USSD response
+     
+//     } else {
+//       // The number is not registered in Firebase
+//       console.log('Number is not registered');
+//     }
+
+//     // Send the USSD response back to the user
+    
+//   } catch (error) {
+//     console.error('Error handling USSD request:', error);
+//     // Send an error response to the user
+//   }
+// // }
+// handleUSSDRequest()
+
+
+
+
+
+
+
+
+// newregref.child('+265995434579').once('value')
+//   .then((snapshot) => {
+//     var numbers = snapshot.val();
+//    if(numbers===null){
+//     console.log('you have not registered')
+//    }
+//    else{
+//     console.log('you are registered')
+//    }
+
+//   });
+
+
+
+
+
+const port = process.env.PORT || 3020;
 
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -16,30 +70,86 @@ app.get("*", (req, res) => {
   res.send("USSD deployed successfully");
 });
 
+app.post("*", async(req, res) => {
+  let { sessionId, serviceCode, phoneNumber, text, response } = req.body;
+  //creating an array of data
+  let dataarray = text.split("*");
 
 
-  app.post("*", async(req, res) => {
-    let { sessionId, serviceCode, phoneNumber, text, response } = req.body;
+  //array length
+  let dataarraysize = dataarray.length;
 
-    let dataarray = text.split("*");
 
-    if (text == "" && language =="") {
+  var currentDate = new Date();
+  var timestamp = currentDate.toISOString();
 
-     
+
+
+
+
+  //......................................first menu...........................................
+  if (text == "" ) {
     
-      response = `CON Welcome to COMESA Trade Assistant
-      1. Expense & Profit Tracking
-      2. Trade Information
-      3. Report Incident
-      4. Help & Support`;
-    
-      }
+    response = `CON Welcome to Farm Radio Trust Test
+      1.Register
+      2.Main Menu
+      3.Help`
+
+  }
+ 
+ 
   
 
-  res.set('Content-Type', 'text/plain');
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+
+
+
+
+  //...................................working on help menu.............................................
+  else if (text == "3") {
+
+    response = `CON choose options below for help
+		1.call center`;
+
+  } 
+  
+  
+  else if (text == "3*1" ) {
+
+    response = `END contact for free on *8111# AIRTEL or *7111# TNM `;
+
+  }
+
+
+  
+  
+  
+
+  else{
+
+    response = `END invalid input`
+  }
+   text = dataarray.join('*')
+  //......................................send the response back.................................
+  res.set("Content-Type: text/plain");
   res.send(response);
+  
 });
 
 app.listen(port, () => {
-  console.log(`USSD service running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
