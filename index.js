@@ -8,9 +8,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post('/ussd', (req, res) => {
-  const { sessionId, serviceCode, phoneNumber, text } = req.body;
+  const { sessionId, serviceCode, phoneNumber, text,response } = req.body;
 
-  let response = '';
+ 
 
   switch (text) {
     case '':
