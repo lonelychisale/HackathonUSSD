@@ -48,10 +48,8 @@ app.post("*", async (req, res) => {
       email = dataarray[1];
       name = dataarray[0];
       await User.create({ phoneNumber,email, name, dateRegistered: new Date() });
-      response = `CON Registration Successful!\n
-      1. Trade Information
-      2. Report Incident
-      3. Help & Support`;
+      response = `END Registration Successful!\n
+     `;
     } 
     else {
       response = `END Invalid input`;
