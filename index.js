@@ -120,7 +120,7 @@ app.post("*", async (req, res) => {
       3. Human Rights Violation`;
     } 
     else if (dataarray[0] === "2" && dataarray.length > 1) {
-      const reportDetails = dataarray.slice(1).join(" ");
+      const reportDetails = "hi test";
       try {
         await twilioClient.messages.create({
           body: `Incident Report from ${user.name} (${user.phoneNumber}): ${reportDetails}`,
