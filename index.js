@@ -26,8 +26,8 @@ app.get("*", (req, res) => {
 app.post("*", async (req, res) => {
   const { sessionId, serviceCode, phoneNumber, text } = req.body;
   let response = "";
-  const name ="";
-  const email ="";
+  let name ="";
+  let email ="";
 
   const dataarray = text.split("*");
   const user = await User.findOne({ phoneNumber });
