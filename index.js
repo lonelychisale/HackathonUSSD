@@ -47,7 +47,7 @@ app.post("*", async (req, res) => {
     else if (dataarray.length === 2) {
       email = dataarray[1];
       name = dataarray[0];
-      await User.create({ phoneNumber, name, dateRegistered: new Date() });
+      await User.create({ phoneNumber,email, name, dateRegistered: new Date() });
       response = `CON Registration Successful!\n
       1. Trade Information
       2. Report Incident
