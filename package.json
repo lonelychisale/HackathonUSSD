@@ -16,6 +16,7 @@
     "debug": "^2.6.9",
     "depd": "^2.0.0",
     "destroy": "^1.2.0",
+    "dotenv": "^16.4.7",
     "dunder-proto": "^1.0.1",
     "ee-first": "^1.1.1",
     "encodeurl": "^2.0.0",
@@ -45,6 +46,7 @@
     "mime": "^1.6.0",
     "mime-db": "^1.52.0",
     "mime-types": "^2.1.35",
+    "mongoose": "^8.12.1",
     "morgan": "^1.10.0",
     "ms": "^2.0.0",
     "negotiator": "^0.6.3",
@@ -87,5 +89,8 @@
     "url": "https://github.com/lonelychisale/HackathonUSSD/issues"
   },
   "homepage": "https://github.com/lonelychisale/HackathonUSSD#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }
