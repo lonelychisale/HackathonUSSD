@@ -69,7 +69,7 @@ app.post("*", async (req, res) => {
   // ===== Main USSD Menu for Registered Users ======
   else {
     if (text === "") {
-      response = `CON Welcome back to E Malawi mpowerTech Trade Assistant\n
+      response = `CON Welcome back to EmpowerTech Malawi Trade Assistant\n
       1. Trade Information
       2. Report Incident
       3. Help & Support`;
