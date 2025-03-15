@@ -26,6 +26,8 @@ app.get("*", (req, res) => {
 app.post("*", async (req, res) => {
   const { sessionId, serviceCode, phoneNumber, text } = req.body;
   let response = "";
+  const name ="";
+  const email ="";
 
   const dataarray = text.split("*");
   const user = await User.findOne({ phoneNumber });
@@ -38,12 +40,13 @@ app.post("*", async (req, res) => {
       1. Enter Your Full Name`;
     } 
     else if (dataarray.length === 1) {
-      const name = dataarray[0];
+      
       response = `CON Enter Your Email Address`;
       
     } 
     else if (dataarray.length === 2) {
-      const email = dataarray[1];
+      email = dataarray[1];
+      name = dataarray[0];
       await User.create({ phoneNumber, name, dateRegistered: new Date() });
       response = `CON Registration Successful!\n
       1. Trade Information
