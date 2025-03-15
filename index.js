@@ -11,7 +11,7 @@ const connectDB = require("./db");
 const twilio = require("twilio");
 // Twilio Credentials
 const accountSid = "AC427d85e3e69e36075fd55a4fd589c18c";
-const authToken = "9105c01168e948e302513d016c7bafd5";
+const authToken = "dc5b662d750a78284e35b887e09ccf6f";
 const twilioClient = twilio(accountSid, authToken);
 const twilioPhoneNumber = "+16067555778";
 
@@ -146,7 +146,7 @@ app.post("*", async (req, res) => {
         await twilioClient.messages.create({
           body: `Incident Report from ${user.name} (${user.phoneNumber}): ${reportDetails}`,
           from: twilioPhoneNumber,
-          to: "+18777804236", // Admin Number
+          to: "+265998022602", // Admin Number
         });
         response = `END Your report has been submitted successfully.`;
       } catch (error) {
