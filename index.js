@@ -5,7 +5,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 //const twilio = require("twilio");
 
-const User = require("./models/User");
+const User = require("./models/Registration");
 const connectDB = require("./db");
 
 const app = express();
