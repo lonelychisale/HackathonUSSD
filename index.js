@@ -7,6 +7,14 @@ const mongoose = require("mongoose");
 const User = require("./models/Registration");
 const connectDB = require("./db");
 
+
+const twilio = require("twilio");
+// Twilio Credentials
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioClient = twilio(accountSid, authToken);
+const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
+
 const app = express();
 const port = process.env.PORT || 3020;
 
@@ -114,6 +122,11 @@ app.post("*", async (req, res) => {
     else if (dataarray[0] === "2" && dataarray.length > 1) {
       const reportDetails = dataarray.slice(1).join(" ");
       try {
+        await twilioClient.messages.create({
+          body: `Incident Report from ${user.name} (${user.phoneNumber}): ${reportDetails}`,
+          from: twilioPhoneNumber,
+          to: "+265998022602", 
+        });
         response = `END Your report has been submitted successfully.`;
       } catch (error) {
         console.error(error);
