@@ -10,10 +10,10 @@ const connectDB = require("./db");
 
 const twilio = require("twilio");
 // Twilio Credentials
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
+const accountSid = "AC427d85e3e69e36075fd55a4fd589c18c";
+const authToken = "9105c01168e948e302513d016c7bafd5";
 const twilioClient = twilio(accountSid, authToken);
-const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
+const twilioPhoneNumber = "+16067555778";
 
 const app = express();
 const port = process.env.PORT || 3020;
